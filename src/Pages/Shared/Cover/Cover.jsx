@@ -19,7 +19,6 @@ const Cover = ({img, title, description}) => {
           <p className="mb-5">
           {description}
           </p>
-          <button className="btn btn-primary">Get Started</button>
         </div>
       </div>
     </div>

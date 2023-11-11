@@ -9,6 +9,9 @@ const Navbar = () => {
       <li>
         <Link className="text-white mx-5" to='menu'>Our Menu</Link>
       </li>
+      <li>
+        <Link className="text-white mx-5" to='order'>Order</Link>
+      </li>
       
     </>
   );
