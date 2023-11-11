@@ -10,7 +10,7 @@ const Navbar = () => {
         <Link className="text-white mx-5" to='menu'>Our Menu</Link>
       </li>
       <li>
-        <Link className="text-white mx-5" to='order'>Order</Link>
+        <Link className="text-white mx-5" to='order/salad'>Order</Link>
       </li>
       
     </>
