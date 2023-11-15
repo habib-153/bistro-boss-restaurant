@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FcGoogle } from 'react-icons/fc';
+
+
 const Login = () => {
     const [disabled, setDisabled] = useState(true)
     const {signIn, signInWithGoogle} = useContext(AuthContext)
