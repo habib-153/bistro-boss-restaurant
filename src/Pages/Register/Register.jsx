@@ -5,10 +5,13 @@ import { useContext, } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../../Comnonent/SocialLogin/SocialLogin";
 
 const Register = () => {
     //const captchaRef = useRef(null)
     //const [disabled, setDisabled] = useState(true)
+    const axiosPublic = useAxiosPublic()
     const {createUser, updateUserProfile} = useContext(AuthContext)
     const navigate = useNavigate()
     const {
@@ -31,15 +34,22 @@ const Register = () => {
     //     }
     // }
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         createUser(data.email, data.password)
         .then(res =>{
             const user = res.user
             console.log(user)
             updateUserProfile(data.name, data.photoURL)
             .then(()=>{
-              console.log("User Updated Successfully")
-              reset()
+              // console.log("User Updated Successfully")
+              const userInfo = {
+                name: data.name,
+                email: data.email
+              }
+              axiosPublic.post('/users', userInfo)
+              .then(res =>{
+                if(res.data.insertedId){
+                  reset()
               Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -48,6 +58,9 @@ const Register = () => {
                 timer: 1500
               });
               navigate('/')
+                }
+              })
+              
             })
         })
       }
@@ -60,7 +73,7 @@ const Register = () => {
         </div>
         <div className="card w-full shadow-2xl bg-base-100">
         <h1 className="text-5xl font-bold text-center">Register</h1>
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-4">
           <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -77,11 +90,11 @@ const Register = () => {
                 <span className="label-text">Photo Url</span>
               </label>
               <input
-                type="text"
+                type="url"
                 placeholder="photoUrl"
-                {...register("name", { required: true })}
+                {...register("photoURL", { required: true })}
                 className="input input-bordered"
-              />{errors.photoUrl && <span>This field is required</span>}
+              />{errors.photoURL && <span>This field is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -135,6 +148,7 @@ const Register = () => {
               <input  className="btn btn-primary" type="submit" value="Register" />
             </div>
           </form>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
