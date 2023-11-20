@@ -8,6 +8,9 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "../../Comnonent/SocialLogin/SocialLogin";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+
 const Register = () => {
     //const captchaRef = useRef(null)
     //const [disabled, setDisabled] = useState(true)
@@ -33,13 +36,22 @@ const Register = () => {
     //         setDisabled(false)
     //     }
     // }
-    const onSubmit = (data) => {
-        // console.log(data)
+    const onSubmit = async (data) => {
+        console.log(data)
+        const imageFile = { image: data.photoURL[0]}
+        const res = await axiosPublic.post(image_hosting_api, imageFile,{
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    })
+    
+      const imageURL = res.data.data.display_url
+    console.log(imageURL)
         createUser(data.email, data.password)
         .then(res =>{
             const user = res.user
             console.log(user)
-            updateUserProfile(data.name, data.photoURL)
+            updateUserProfile(data.name, imageURL)
             .then(()=>{
               // console.log("User Updated Successfully")
               const userInfo = {
@@ -90,10 +102,10 @@ const Register = () => {
                 <span className="label-text">Photo Url</span>
               </label>
               <input
-                type="url"
+                type="file"
                 placeholder="photoUrl"
                 {...register("photoURL", { required: true })}
-                className="input input-bordered"
+                className="input input-bordered pt-2"
               />{errors.photoURL && <span>This field is required</span>}
             </div>
             <div className="form-control">
