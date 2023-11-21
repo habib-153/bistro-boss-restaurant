@@ -85,7 +85,7 @@ const CheckoutForm = () => {
               const res = await axiosSecure.post('/payments', payment)
               console.log('payment saved',res)
               refetch()
-              navigate('//dashboard/paymentHistory')
+              navigate('/dashboard/paymentHistory')
         }
     }
   };
