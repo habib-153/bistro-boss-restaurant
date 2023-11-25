@@ -77,7 +77,7 @@ const AdminHome = () => {
     );
   };
 
-  const pieChatData = chartData.map(data => {
+  const pieChatData = chartData?.map(data => {
     return { name: data.category, value: data.revenue}
   })
   return (
@@ -166,7 +166,7 @@ const AdminHome = () => {
               fill="#8884d8"
               dataKey="value"
             >
-              {pieChatData.map((entry, index) => (
+              {pieChatData?.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}
