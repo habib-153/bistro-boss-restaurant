@@ -83,6 +83,7 @@ export const router = createBrowserRouter([
         path:'updateItem/:id',
         element:<AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
         loader: ({params}) => fetch(`https://bistro-boss-server-blond-zeta.vercel.app/menu/${params.id}`)
+        //     fetch("https://bistro-boss-server-blond-zeta.vercel.app/reviews")
       },
       {
         path:'addItems',
