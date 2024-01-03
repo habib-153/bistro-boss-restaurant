@@ -29,6 +29,9 @@ const Cart = () => {
   const onSubmit = async (data) => {
     const info = {
       name: data.name,
+      email: user.email,
+      address: data.address,
+      phone: data.phone,
       currency: data.currency,
       price: parseFloat(totalPriceInSelectedCurrency.toFixed(2)),
     };
@@ -88,7 +91,28 @@ const Cart = () => {
                 placeholder="Customer name"
                 defaultValue={user.displayName}
                 className="input input-bordered"
-                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-semibold">Address</span>
+              </label>
+              <input
+                type="text"
+                {...register("address", { required: true })}
+                placeholder="Address"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-semibold">Phone Number</span>
+              </label>
+              <input
+                type="text"
+                {...register("phone", { required: true })}
+                placeholder="Phone Number"
+                className="input input-bordered"
               />
             </div>
             <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
@@ -118,7 +142,6 @@ const Cart = () => {
               value={totalPriceInSelectedCurrency.toFixed(2)}
               className="input input-bordered"
               readOnly
-              required
             />
           </div>
             </div>
