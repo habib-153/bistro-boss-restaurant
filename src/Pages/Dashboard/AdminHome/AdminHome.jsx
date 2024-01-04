@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { FaBook, FaDollarSign, FaList, FaUsers } from "react-icons/fa";
+import { FaBook,  FaList, FaUsers } from "react-icons/fa";
 import {
   BarChart,
   Bar,
@@ -91,11 +91,8 @@ const AdminHome = () => {
       <div>
         <div className="stats shadow">
           <div className="stat">
-            <div className="stat-figure text-3xl text-secondary">
-              <FaDollarSign></FaDollarSign>
-            </div>
             <div className="stat-title">Revenue</div>
-            <div className="stat-value">${stats?.revenue}</div>
+            <div className="stat-value">${stats?.revenue.toFixed(2)}</div>
             <div className="stat-desc">Jan 1st - Feb 1st</div>
           </div>
 

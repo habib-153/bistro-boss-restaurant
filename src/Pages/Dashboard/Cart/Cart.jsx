@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { FaTrash } from "react-icons/fa";
 import useCart from "../../../Hooks/useCart";
 import Swal from "sweetalert2";
@@ -33,9 +34,18 @@ const Cart = () => {
       address: data.address,
       phone: data.phone,
       currency: data.currency,
-      price: parseFloat(totalPriceInSelectedCurrency.toFixed(2)),
+      price: parseFloat(totalPriceInSelectedCurrency),
+      date: new Date(),
+      cartIds: cart.map(item => item._id),
+      menuItemIds: cart.map(item => item.menuId),
+      status: 'pending'
     };
-    console.log(info)
+    // console.log(info)
+    const res = await axiosSecure.post('/payment', info)
+    if(res){
+      console.log(res.data)
+      window.location.replace(res.data.url)
+    }
   };
 
   const handleDelete = (id) => {

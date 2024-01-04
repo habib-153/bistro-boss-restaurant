@@ -17,6 +17,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/paymentHistory/PaymentHistory";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import PaymentSuccess from "../Pages/Dashboard/PaymentSuccess/PaymentSuccess";
 
 
 export const router = createBrowserRouter([
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path:'payment',
         element:<Payment></Payment>
+      },
+      {
+        path:'payment/success/:tranId',
+        element:<PaymentSuccess></PaymentSuccess>
       },
       {
         path:'paymentHistory',
