@@ -77,7 +77,7 @@ const Cart = () => {
       <div>
         <div className="flex justify-evenly items-center">
           <h2 className="text-4xl">Items: {cart.length}</h2>
-          <h2 className="text-2xl">Total Price: ${totalPriceInSelectedCurrency.toFixed(2)}</h2>
+          {/* <h2 className="text-2xl">Total Price: ${totalPriceInSelectedCurrency.toFixed(2)}</h2>
           {cart.length > 0 ? (
             <Link to="/dashboard/payment">
               <button className="btn btn-outline">Pay</button>
@@ -86,7 +86,7 @@ const Cart = () => {
             <button disabled className="btn btn-outline">
               Pay
             </button>
-          )}
+          )} */}
         </div>
 
         <div>
