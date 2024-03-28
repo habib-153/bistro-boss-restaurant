@@ -23,11 +23,11 @@ const Login = () => {
         const form = e.target
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        //console.log(email, password)
         signIn(email, password)
         .then(res =>{
           const user = res.user
-          console.log(user)
+          //console.log(user)
           Swal.fire({
             title: "User Logged in successful",
             showClass: {

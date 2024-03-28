@@ -22,7 +22,7 @@ const CheckoutForm = () => {
     if(price > 0 ){
       axiosSecure.post('/create-payment-intent', {price: price})
     .then(res =>{
-        console.log(res.data)
+        //console.log(res.data)
         setClientSecret(res.data.clientSecret)
     })
     }
@@ -44,10 +44,10 @@ const CheckoutForm = () => {
         card
     })
     if (error) {
-        console.log('[error]', error);
+        //console.log('[error]', error);
         setError(error)
       } else {
-        console.log('[PaymentMethod]', paymentMethod);
+        //console.log('[PaymentMethod]', paymentMethod);
         setError('')
       }
     //   confirm payment
@@ -61,10 +61,10 @@ const CheckoutForm = () => {
         }
     })
     if(confirmError){
-        console.log('Confirm Error')
+        //console.log('Confirm Error')
     }
     else{
-        console.log('payment intent', paymentIntent)
+        //console.log('payment intent', paymentIntent)
         if(paymentIntent.status === 'succeeded'){
             setTransactionId(paymentIntent.id)
             Swal.fire({
@@ -83,7 +83,7 @@ const CheckoutForm = () => {
                 status: 'pending'
               }
               const res = await axiosSecure.post('/payments', payment)
-              console.log('payment saved',res)
+              //console.log('payment saved',res)
               refetch()
               navigate('/dashboard/paymentHistory')
         }

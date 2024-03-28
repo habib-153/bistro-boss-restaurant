@@ -37,7 +37,7 @@ const Register = () => {
     //     }
     // }
     const onSubmit = async (data) => {
-        console.log(data)
+        //console.log(data)
         const imageFile = { image: data.photoURL[0]}
         const res = await axiosPublic.post(image_hosting_api, imageFile,{
         headers: {
@@ -46,11 +46,11 @@ const Register = () => {
     })
     
       const imageURL = res.data.data.display_url
-    console.log(imageURL)
+    //console.log(imageURL)
         createUser(data.email, data.password)
         .then(res =>{
             const user = res.user
-            console.log(user)
+            //console.log(user)
             updateUserProfile(data.name, imageURL)
             .then(()=>{
               // console.log("User Updated Successfully")
