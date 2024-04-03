@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Link, useNavigate } from "react-router-dom";
 import loginImg from '../../assets/assets/others/authentication1.png';
 //import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';

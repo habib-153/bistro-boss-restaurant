@@ -26,6 +26,7 @@ const Login = () => {
         //console.log(email, password)
         signIn(email, password)
         .then(res =>{
+          // eslint-disable-next-line no-unused-vars
           const user = res.user
           //console.log(user)
           Swal.fire({
